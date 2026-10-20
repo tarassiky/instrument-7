@@ -1,0 +1,47 @@
+
+@startuml use_case
+left to right direction
+
+actor "Посетитель сайта" as Visitor
+actor "Студент" as Student
+actor "Преподаватель" as Teacher
+actor "Сотрудник кафедры" as Employee
+actor "Администратор сайта" as Admin
+
+Student --|> Visitor
+Teacher --|> Visitor
+Employee --|> Visitor
+Admin --|> Visitor
+
+rectangle "Сайт кафедры ИТиТО" {
+    usecase "Просмотреть главную страницу" as UC1
+    usecase "Просмотреть новости" as UC2
+    usecase "Просмотреть мероприятия" as UC3
+    usecase "Просмотреть информацию о кафедре" as UC4
+    usecase "Просмотреть преподавателей" as UC5
+    usecase "Просмотреть образовательные программы" as UC6
+    usecase "Найти документы и материалы" as UC7
+    usecase "Просмотреть контакты" as UC8
+
+    usecase "Создавать и редактировать новости" as UC9
+    usecase "Управлять страницами и материалами" as UC10
+    usecase "Управлять учетными записями и правами" as UC11
+}
+
+Visitor --> UC1
+Visitor --> UC2
+Visitor --> UC3
+Visitor --> UC4
+Visitor --> UC5
+Visitor --> UC6
+Visitor --> UC7
+Visitor --> UC8
+
+Employee --> UC9
+Employee --> UC10
+
+Admin --> UC9
+Admin --> UC10
+Admin --> UC11
+
+@enduml

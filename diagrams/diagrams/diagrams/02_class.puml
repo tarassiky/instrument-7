@@ -1,0 +1,85 @@
+
+@startuml class_diagram
+skinparam classAttributeIconSize 0
+
+class Page {
+    +id: int
+    +title: str
+    +slug: str
+    +content: text
+    +is_published: bool
+    +created_at: datetime
+    +update_content()
+    +publish()
+}
+
+class News {
+    +id: int
+    +title: str
+    +content: text
+    +publication_date: datetime
+    +status: str
+    +publish()
+    +edit()
+    +archive()
+}
+
+class Event {
+    +id: int
+    +title: str
+    +description: text
+    +event_date: datetime
+    +location: str
+    +status: str
+}
+
+class Teacher {
+    +id: int
+    +full_name: str
+    +position: str
+    +biography: text
+    +email: str
+}
+
+class EducationalProgram {
+    +id: int
+    +name: str
+    +description: text
+    +degree: str
+    +study_direction: str
+}
+
+class Document {
+    +id: int
+    +title: str
+    +file_url: str
+    +category: str
+    +uploaded_at: datetime
+}
+
+class User {
+    +id: int
+    +username: str
+    +email: str
+    +role: str
+    +login()
+    +edit_content()
+}
+
+class Contact {
+    +id: int
+    +address: str
+    +phone: str
+    +email: str
+    +office_hours: str
+}
+
+User "1" --> "0..*" News : создает
+User "1" --> "0..*" Page : редактирует
+User "1" --> "0..*" Event : управляет
+Page "1" o-- "0..*" Document : содержит
+EducationalProgram "0..*" -- "0..*" Teacher : реализуется при участии
+Page "1" o-- "0..*" News : отображает
+Page "1" o-- "0..*" Event : отображает
+
+@enduml

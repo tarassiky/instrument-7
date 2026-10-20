@@ -1,0 +1,18 @@
+
+@startuml state
+[*] --> Draft : Создание новости
+
+state Draft as "Черновик"
+state Review as "На проверке"
+state Published as "Опубликована"
+state Archived as "В архиве"
+
+Draft --> Review : Отправить на проверку
+Review --> Draft : Вернуть на доработку
+Review --> Published : Одобрить публикацию
+Published --> Draft : Снять с публикации
+Published --> Archived : Архивировать
+Archived --> Draft : Восстановить
+
+Archived --> [*] : Удалить новость
+@enduml

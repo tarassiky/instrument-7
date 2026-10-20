@@ -1,0 +1,5 @@
+
+@startuml test
+Alice -> Bob: Привет!
+Bob --> Alice: Привет!
+@enduml

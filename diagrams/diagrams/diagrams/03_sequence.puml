@@ -1,0 +1,21 @@
+
+@startuml sequence
+actor "Посетитель" as Visitor
+boundary "Интерфейс сайта" as UI
+control "Обработчик запросов" as Controller
+database "База данных" as DB
+
+Visitor -> UI : Открывает раздел новостей
+UI -> Controller : Запрос списка новостей
+Controller -> DB : Получить опубликованные новости
+DB --> Controller : Список новостей
+Controller --> UI : Данные новостей
+UI --> Visitor : Отображение списка
+
+Visitor -> UI : Выбирает новость
+UI -> Controller : Запрос новости по идентификатору
+Controller -> DB : Получить новость
+DB --> Controller : Данные новости
+Controller --> UI : Заголовок и содержание
+UI --> Visitor : Отображение новости
+@enduml
